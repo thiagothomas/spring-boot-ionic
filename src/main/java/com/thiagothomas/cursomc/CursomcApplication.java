@@ -2,6 +2,7 @@ package com.thiagothomas.cursomc;
 
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Collections;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -73,11 +74,11 @@ public class CursomcApplication implements CommandLineRunner{
 		Produto p3 = new Produto(null, "Mouse", 80.00);
 		
 		cat1.getProdutos().addAll(Arrays.asList(p1, p2, p3));
-		cat2.getProdutos().addAll(Arrays.asList(p2));
+		cat2.getProdutos().addAll(Collections.singletonList(p2));
 		
-		p1.getCategorias().addAll(Arrays.asList(cat1));
+		p1.getCategorias().addAll(Collections.singletonList(cat1));
 		p2.getCategorias().addAll(Arrays.asList(cat1, cat2));
-		p3.getCategorias().addAll(Arrays.asList(cat1));
+		p3.getCategorias().addAll(Collections.singletonList(cat1));
 		
 		categoriaRepository.saveAll(Arrays.asList(cat1, cat2, cat3, cat4, cat5, cat6, cat7));		
 		produtoRepository.saveAll(Arrays.asList(p1, p2, p3));
@@ -89,7 +90,7 @@ public class CursomcApplication implements CommandLineRunner{
 		Cidade c2 = new Cidade(null, "São Paulo", est2);
 		Cidade c3 = new Cidade(null, "Campinas", est2);
 		
-		est1.getCidades().addAll(Arrays.asList(c1));
+		est1.getCidades().addAll(Collections.singletonList(c1));
 		est2.getCidades().addAll(Arrays.asList(c2, c3));
 		
 		estadoRepository.saveAll(Arrays.asList(est1, est2));
@@ -103,7 +104,7 @@ public class CursomcApplication implements CommandLineRunner{
 		
 		cli1.getEnderecos().addAll(Arrays.asList(e1, e2));
 		
-		clienteRepository.saveAll(Arrays.asList(cli1));
+		clienteRepository.saveAll(Collections.singletonList(cli1));
 		enderecoRepository.saveAll(Arrays.asList(e1, e2));
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
@@ -127,11 +128,11 @@ public class CursomcApplication implements CommandLineRunner{
 		ItemPedido ip3 = new ItemPedido(ped2, p2, 100.00, 1, 800.00);
 		
 		ped1.getItens().addAll(Arrays.asList(ip1, ip2));
-		ped2.getItens().addAll(Arrays.asList(ip3));
+		ped2.getItens().addAll(Collections.singletonList(ip3));
 		
-		p1.getItens().addAll(Arrays.asList(ip1));
-		p2.getItens().addAll(Arrays.asList(ip3));
-		p3.getItens().addAll(Arrays.asList(ip2));
+		p1.getItens().addAll(Collections.singletonList(ip1));
+		p2.getItens().addAll(Collections.singletonList(ip3));
+		p3.getItens().addAll(Collections.singletonList(ip2));
 		
 		itemPedidoRepository.saveAll(Arrays.asList(ip1, ip2, ip3));
 	}
