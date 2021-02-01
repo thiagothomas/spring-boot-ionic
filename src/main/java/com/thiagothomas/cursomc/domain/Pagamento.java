@@ -28,9 +28,9 @@ public abstract class Pagamento implements Serializable {
 	@MapsId
 	private Pedido pedido;
 	
-	public Pagamento() {}
+	protected Pagamento() {}
 
-	public Pagamento(Integer id, EstadoPagamento estado, Pedido pedido) {
+	protected Pagamento(Integer id, EstadoPagamento estado, Pedido pedido) {
 		super();
 		this.id = id;
 		this.estado = (estado == null) ? null : estado.getCod();
@@ -79,10 +79,7 @@ public abstract class Pagamento implements Serializable {
 			return false;
 		Pagamento other = (Pagamento) obj;
 		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		return true;
+			return other.id == null;
+		} else return id.equals(other.id);
 	}
 }
